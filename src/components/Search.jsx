@@ -13,9 +13,9 @@ const Search = () => {
   };
 
   return (
-    <div>
-      <input type="search" ref={inputRef} />
-      <button onClick={handleSubmit}>Search</button>
+    <div className="search-container">
+      <input type="search" ref={inputRef} className="input" />
+      <button onClick={handleSubmit} className="search_button">Search image</button>
     </div>
   );
 };
