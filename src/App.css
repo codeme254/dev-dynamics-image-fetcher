@@ -57,3 +57,44 @@ body{
   justify-content: center;
   align-items: center;
 }
+
+.nav{
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+}
+
+.param{
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.input{
+  padding: 2rem;
+  width: 70%;
+  border-radius: 100px;
+  margin-right: 1rem;
+  border: 2px solid #05a081;
+
+}
+
+.search-container{
+  width: 60%;
+
+}
+.search_button{
+  padding: 2rem;
+  background-color: #05a081;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  border:none;
+  outline: none;
+  border-radius: 100px;
+}
+
+.link{
+  text-decoration: none;
+  color: #05a081;
+  font-weight: bold;
+}
