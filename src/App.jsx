@@ -5,7 +5,6 @@ import Search from "./components/Search";
 import ShowData from "./components/ShowData";
 import { config } from "./axios/axios";
 import api from "./axios/axios";
-import Navbar from "./components/Navbar";
 
 export const SearchTerm = createContext()
 
@@ -26,11 +25,12 @@ function App() {
   return (
     <>
       <SearchTerm.Provider value={{ param, setParams, fetchData, clickedItem }}>
-        <Navbar/>
-      
+        <div>
+          <Search />
+        </div>
         <div className="container-full">
           <div>
-            <h2 className="param">{param}</h2>
+            <h2>{param}</h2>
             <div className="images__container">
               {images &&
                 images.map((item) => (
