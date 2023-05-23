@@ -1,13 +1,20 @@
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import "./App.css";
+import Search from "./components/Search";
+import ShowData from "./components/ShowData";
+import { config } from "./axios/axios";
 import api from "./axios/axios";
+
+export const SearchTerm = createContext()
 
 function App() {
   const [images, setImages] = useState([]);
+  const [param, setParams] = useState("nature")
+  const [clickedItem, setClickedItem] = useState()
 
-  const fetchData = async () => {
-    const data = await api.get("search?query=nature&per_page=10");
+  const fetchData = async (searchterm = "nature") => {
+    const data = await api.get(`search?query=${searchterm}&per_page=10`, config);
     setImages(data.data.photos);
   };
 
