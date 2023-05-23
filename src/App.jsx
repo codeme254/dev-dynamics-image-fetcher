@@ -1,33 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
 import './App.css'
+import axios from 'axios'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [images, setImages] = useState([]);
+  const config = {
+    headers: {
+      Authorization: 'RobVDqZRreoYIwwr0yefoaS4ZbAz1r4z65wjbNLgMYzU7lKseSJc1LyF'
+    },
+    withCredentials: false,
+    'Acess-Control-Allow-Origin': '*'
+  }
+  const url = "https://api.pexels.com/v1/search?query=nature&per_page=20"
+  
+  const fetchData = async () => {
+    const data = await axios.get(url, config);
+    setImages(data.data.photos)
+    console.log(data.data.photos);
+  }
+  // fetchData()
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="images__container">
+      {
+       images && images.map((item) => (
+          <div key={item.id} className='photo_box'>
+            <div className="image_box">
+              <img src={item.src.medium} alt={item.alt} />
+            </div>
+            <p>Photo taken by <a href={item.photographer_url}>{item.photographer}</a></p>
+          </div>
+       ))
+
+      }
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
