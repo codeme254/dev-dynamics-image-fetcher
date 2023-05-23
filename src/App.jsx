@@ -39,7 +39,7 @@ function App() {
             images.map((item) => (
               <div key={item.id} className="photo_box">
                 <div className="image_box">
-                  <img src={item.src.medium} alt={item.alt} />
+                  <img src={item.src.large} alt={item.alt} />
                 </div>
                 <p>
                   Photo taken by{" "}

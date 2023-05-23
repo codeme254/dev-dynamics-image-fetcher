@@ -9,16 +9,13 @@ const Search = () => {
     e.preventDefault();
     setParams(inputRef.current.value);
     console.log(inputRef.current.value);
-
     fetchData(param);
   };
 
   return (
     <div>
-        <form onSubmit={handleSubmit} >
       <input type="search" ref={inputRef} />
-      <button type="submit">Search</button>
-        </form>
+      <button onClick={handleSubmit}>Search</button>
     </div>
   );
 };
