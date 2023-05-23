@@ -28,7 +28,7 @@ function App() {
         <div>
           <Search />
         </div>
-        <div>
+        <div className="container-full">
           <div>
             <h2>{param}</h2>
             <div className="images__container">

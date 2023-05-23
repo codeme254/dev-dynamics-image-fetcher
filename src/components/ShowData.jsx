@@ -3,8 +3,9 @@ import { SearchTerm } from "../App";
 
 export default function ShowData() {
   const { clickedItem } = useContext(SearchTerm);
+  // clicked-item__active
   return (
-    <div>
+    <div className="clicked-item">
       {clickedItem && (
         <>
           <div>
