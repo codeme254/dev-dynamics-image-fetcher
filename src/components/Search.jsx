@@ -3,19 +3,25 @@ import { SearchTerm } from "../App";
 
 const Search = () => {
   const { param, setParams, fetchData } = useContext(SearchTerm);
-  const inputRef = useRef(null);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setParams(inputRef.current.value);
-    console.log(inputRef.current.value);
+  const handleSubmit = () => {
     fetchData(param);
+    // setParams("");
   };
 
   return (
     <div className="search-container">
-      <input type="search" ref={inputRef} className="input" />
-      <button onClick={handleSubmit} className="search_button">Search image</button>
+      <input
+        type="search"
+        value={param}
+        onChange={(e) => {
+          setParams(e.target.value);
+        }}
+        className="input"
+      />
+      <button onClick={handleSubmit} className="search_button">
+        Search image
+      </button>
     </div>
   );
 };
