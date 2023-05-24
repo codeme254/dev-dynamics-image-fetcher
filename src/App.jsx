@@ -1,26 +1,35 @@
-
-import { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useRef } from "react";
 import "./App.css";
 import Search from "./components/Search";
 import ShowData from "./components/ShowData";
 import { config } from "./axios/axios";
 import api from "./axios/axios";
 
-export const SearchTerm = createContext()
+export const SearchTerm = createContext();
 
 function App() {
   const [images, setImages] = useState([]);
-  const [param, setParams] = useState("nature")
-  const [clickedItem, setClickedItem] = useState()
+  const [param, setParams] = useState("nature");
+  const [clickedItem, setClickedItem] = useState(null);
+  const backdropRef = useRef(null);
 
   const fetchData = async (searchterm = "nature") => {
-    const data = await api.get(`search?query=${searchterm}&per_page=10`, config);
+    const data = await api.get(
+      `search?query=${searchterm}&per_page=10`,
+      config
+    );
     setImages(data.data.photos);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleClickAway = (event) => {
+    if (backdropRef.current === event.target) {
+      setClickedItem(null);
+    }
+  };
 
   return (
     <>
@@ -52,9 +61,15 @@ function App() {
                 ))}
             </div>
           </div>
-          <div>
-            <ShowData />
-          </div>
+          {clickedItem && (
+            <div
+              className="backdrop"
+              ref={backdropRef}
+              onClick={handleClickAway}
+            >
+              <ShowData />
+            </div>
+          )}
         </div>
       </SearchTerm.Provider>
     </>
