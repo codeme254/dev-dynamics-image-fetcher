@@ -3,12 +3,12 @@ import { SearchTerm } from "../App";
 
 export default function ShowData() {
   const { clickedItem } = useContext(SearchTerm);
-
+  // clicked-item__active
   return (
     <div className="clicked-item">
       {clickedItem && (
-        <div className="image-card">
-          <div className="image-container">
+        <>
+          <div>
             <img src={clickedItem.src.large} alt={clickedItem.alt} />
           </div>
           <p>
@@ -17,7 +17,7 @@ export default function ShowData() {
               {clickedItem.photographer}
             </a>
           </p>
-        </div>
+        </>
       )}
     </div>
   );
