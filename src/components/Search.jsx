@@ -17,7 +17,7 @@ const Search = () => {
       <input type="search" ref={inputRef} />
       <button onClick={handleSubmit}>Search</button>
     </div>
-  );
+  );  
 };
 
 export default Search;

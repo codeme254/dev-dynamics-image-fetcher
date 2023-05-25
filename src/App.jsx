@@ -3,7 +3,6 @@ import { useState, useEffect, createContext } from "react";
 import "./App.css";
 import axios from "axios";
 import Search from "./components/Search";
-
 export const SearchTerm = createContext();
 
 function App() {
@@ -11,7 +10,7 @@ function App() {
   const [param, setParams] = useState('');
   const config = {
     headers: {
-      Authorization: "RobVDqZRreoYIwwr0yefoaS4ZbAz1r4z65wjbNLgMYzU7lKseSJc1LyF",
+      Authorization: `RobVDqZRreoYIwwr0yefoaS4ZbAz1r4z65wjbNLgMYzU7lKseSJc1LyF`,
     },
     withCredentials: false,
     "Acess-Control-Allow-Origin": "*",
