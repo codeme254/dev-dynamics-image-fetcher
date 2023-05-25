@@ -1,8 +1,10 @@
 import axios from "axios";
 
+const KEY = import.meta.env.VITE_API_KEY;
+
 export const config = {
   headers: {
-    Authorization: "RobVDqZRreoYIwwr0yefoaS4ZbAz1r4z65wjbNLgMYzU7lKseSJc1LyF",
+    Authorization: KEY,
   },
   withCredentials: false,
   "Access-Control-Allow-Origin": "*",
